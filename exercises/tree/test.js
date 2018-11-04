@@ -27,6 +27,21 @@ describe('Node', () => {
     n.remove('b');
     expect(n.children.length).toEqual(0);
   });
+
+  test('Node removes correct node', () => {
+    const n1 = new Node('i am the first node');
+    n1.add('i am the first child that should be removed');
+    expect(n1.children.length).toEqual(1);
+    n1.add('i am the second child that should not be removed');
+    expect(n1.children.length).toEqual(2);
+    n1.remove('i am the first child that should be removed');
+    expect(n1.children[0]).toEqual(
+      {
+        "children": [],
+        "data": "i am the second child that should not be removed"
+      }
+    );
+  })
 });
 
 describe.skip('Tree', () => {
